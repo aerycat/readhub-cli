@@ -15,7 +15,7 @@ $ readhub
 | argv           | type               | effect                                |
 | -------------- | ------------------ |-------------------------------------- |
 | -s, --size     | number(1 ~ 100)    | Set the number of list items          |
-| -i, --interval | number(ms, > 1000) | Set refresh interval                  |
+| -i, --interval | number(s, > 1)     | Set refresh interval                  |
 | -r, --reverse  | boolean            | Set the reverse direction of the list |
 <br />
 

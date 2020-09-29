@@ -33,7 +33,7 @@ const Counter = () => {
   const [latest, setLatest] = React.useState(dayjs().format("HH:mm:ss"));
 
   const _size = argvFormat(["s", "size"], (v) => v > 0 && v <= 100) || 10;
-  const _interval = argvFormat(["i", "interval"], (v) => v > 1000) || 10000;
+  const _interval = argvFormat(["i", "interval"], (v) => v > 1) || 10;
   const _reverse =
     argvFormat(["r", "reverse"], (v) => v !== undefined) || false;
 
@@ -72,7 +72,7 @@ const Counter = () => {
     fetchData();
     const timer = setInterval(() => {
       fetchData();
-    }, _interval);
+    }, _interval * 1000);
 
     return () => {
       clearInterval(timer);
