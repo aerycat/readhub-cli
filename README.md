@@ -1,8 +1,9 @@
 # readhub-cli
+> a cli tool for [readhub.cn](https://readhub.cn)
 
 ## Install
 ```
-$ npm install git+https://github.com/aerycat/readhub-cli.git
+$ npm install -g git+https://github.com/aerycat/readhub-cli.git
 ```
 
 ## Usage
