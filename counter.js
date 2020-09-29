@@ -22,6 +22,11 @@ function argvFormat(key = [], verifier = null) {
   return val;
 }
 
+function directList(list = [], reverse = false) {
+  const newList = [...list];
+  return reverse ? newList.reverse() : newList;
+}
+
 const Counter = () => {
   const [dataList, setDataList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -47,15 +52,15 @@ const Counter = () => {
       setDataList((dataList) => {
         let newDataList = [
           ...dataList.map((item) => ({ ...item, isNew: false })),
-        ];
-        let d = _reverse ? res.data.reverse() : res.data;
+				];
+				let d = res.data.reverse()
         d.forEach((item) => {
           if (
             item.id &&
             newDataList.findIndex(({ id }) => id === item.id) < 0
           ) {
-            if (newDataList.length >= 10) newDataList = newDataList.slice(-9);
-            newDataList.push({ ...item, isNew: true });
+            if (newDataList.length >= 10) newDataList = newDataList.splice(9);
+            newDataList.unshift({ ...item, isNew: true });
           }
         });
         return newDataList;
@@ -80,7 +85,7 @@ const Counter = () => {
         {`🕓  ${latest}`}
         {isLoading ? " ..." : ""}
       </Text>
-      {dataList.map((item) => (
+      {directList(dataList, _reverse).map((item) => (
         <Text key={item.id} color={item.isNew ? "green" : "white"}>
           {`· ${item.title}`}
         </Text>
