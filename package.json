@@ -1,0 +1,26 @@
+{
+  "name": "readhub",
+  "version": "0.1.0",
+  "description": "a cli tool for readhub.cn",
+  "main": "index.js",
+  "bin": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "news",
+    "reading",
+    "zh-CN"
+  ],
+  "author": "aerycat",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dayjs": "^1.9.1",
+    "import-jsx": "^4.0.0",
+    "ink": "^3.0.6",
+    "minimist": "^1.2.5",
+    "react": "^16.13.1"
+  }
+}
