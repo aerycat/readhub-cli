@@ -22,5 +22,6 @@ $ readhub
 
 > ### Example:
 ```
-$ readhub -s 20 -i 50000 -r
+$ readhub -s 10 -i 60 -r
 ```
+![example](./carbon.png)
