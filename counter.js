@@ -59,7 +59,7 @@ const Counter = () => {
             item.id &&
             newDataList.findIndex(({ id }) => id === item.id) < 0
           ) {
-            if (newDataList.length >= 10) newDataList.splice(9);
+            if (newDataList.length >= _size) newDataList.splice(_size - 1);
             newDataList.unshift({ ...item, isNew: true });
           }
         });
