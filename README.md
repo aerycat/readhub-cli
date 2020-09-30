@@ -1,4 +1,5 @@
 # readhub-cli
+[![Actions Status](https://github.com/aerycat/readhub-cli/workflows/action/badge.svg)](https://github.com/aerycat/readhub-cli/actions)
 > a cli tool for [readhub.cn](https://readhub.cn)
 
 ## Install
