@@ -1,6 +1,6 @@
 {
   "name": "readhub",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a cli tool for readhub.cn",
   "main": "index.js",
   "bin": "index.js",
