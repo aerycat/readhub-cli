@@ -55,11 +55,7 @@ const Counter = () => {
   const [topics, setTopics] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [latest, setLatest] = React.useState(dayjs().format("HH:mm:ss"));
-
-  const newTopicsCount = React.useMemo(
-    () => topics.filter((item) => item.isNew).length,
-    [topics]
-  );
+  const [newTopicsCount, setNewTopicsCount] = React.useState(0);
 
   const fetchData = async () => {
     let newTopics = [];
@@ -72,17 +68,25 @@ const Counter = () => {
       newTopics = res && Array.isArray(res.data) ? res.data : [];
     } catch (error) {}
 
+    let ntc = 0;
+
     if (newTopics.length > 0) {
-      setTopics((topics) =>
-        checkHasNew(newTopics, topics)
-          ? newTopics.map((newItem) => ({
+      setTopics((topics) => {
+        if (checkHasNew(newTopics, topics)) {
+          return newTopics.map((newItem) => {
+            const isNew =
+              topics.findIndex((oldItem) => oldItem.id === newItem.id) < 0;
+            ntc = ntc + (isNew ? 1 : 0);
+            return {
               ...newItem,
-              isNew:
-                topics.findIndex((oldItem) => oldItem.id === newItem.id) < 0,
-            }))
-          : topics
-      );
+              isNew,
+            };
+          });
+        }
+        return topics;
+      });
     }
+    setNewTopicsCount(ntc);
     setLatest(dayjs().format("HH:mm:ss"));
     setIsLoading(false);
   };
@@ -101,11 +105,17 @@ const Counter = () => {
 
   return (
     <>
-      <Text color="yellow">
-        {`§ ${latest}`}
+      <Text>
+        <Text inverse color="green">
+          &nbsp;READHUB&nbsp;
+        </Text>
+        <Text inverse color="yellow">
+          &nbsp;
+          {latest}
+          &nbsp;
+        </Text>
         {newTopicsCount > 0 && (
           <>
-            &nbsp;&nbsp;
             <Text inverse color="red">
               &nbsp;{newTopicsCount}&nbsp;
             </Text>
