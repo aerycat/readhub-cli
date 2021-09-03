@@ -4,6 +4,7 @@ const { render, Text } = require("ink");
 const axios = require("axios");
 const dayjs = require("dayjs");
 const argv = require("minimist")(process.argv.slice(2));
+const pkg = require('./package.json')
 
 const msUnit = 1000;
 
@@ -81,7 +82,7 @@ const Counter = () => {
               ...newItem,
               isNew,
             };
-          });
+          }).sort((a, b) => (a.isNew ? 1 : 0) - (b.isNew ? 1 : 0));
         }
         return topics;
       });
@@ -107,7 +108,7 @@ const Counter = () => {
     <>
       <Text>
         <Text inverse color="green">
-          &nbsp;READHUB&nbsp;
+          &nbsp;READHUB v{pkg.version}&nbsp;
         </Text>
         <Text inverse color="yellow">
           &nbsp;
