@@ -82,7 +82,7 @@ const Counter = () => {
               ...newItem,
               isNew,
             };
-          }).sort((a, b) => (a.isNew ? 1 : 0) - (b.isNew ? 1 : 0));
+          }).sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
         }
         return topics;
       });
